@@ -35,6 +35,12 @@ body {
     }
 }
 
+ #map {
+   width: 100%;
+   height: 400px;
+   background-color: grey;
+ }
+
 .navbar-top-links {
     margin-right: 0;
 }
