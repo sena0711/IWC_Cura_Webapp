@@ -5,15 +5,15 @@
  */
 
 html {
-    background: url("http://theme.dima-lab.com/okab/images/landing-page-iphone/blurred-home-bg.jpg") no-repeat center center fixed;
-    background-color: black;
+    background: url("../css/bg.png") no-repeat center center fixed;
+    
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
 body {
-    background-color: #f8f8f8;
+    background-color:transparent;
 }
 
 #wrapper {
@@ -40,6 +40,21 @@ body {
    height: 400px;
    background-color: grey;
  }
+
+.image-bg-fluid-height,
+.image-bg-fixed-height {
+    text-align: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.image-bg-fluid-height {
+	background: url('') no-repeat center center scroll;
+    padding: 10px 0;
+}
+
 
 .navbar-top-links {
     margin-right: 0;
