@@ -314,7 +314,7 @@
         var flightPath = new google.maps.Polyline({
           path: flightPlanCoordinates,
           geodesic: true,
-          strokeColor: '#FF0000',
+          strokeColor: '#5cb85c',
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
@@ -324,6 +324,27 @@
             map: map
         });
         flightPath.setMap(map);
+
+
+         var bounds = {
+          north:-36.74025975,
+          south: -36.79004097,
+          east: 174.78398323,
+          west: 174.72922325
+        };
+
+        // Define a rectangle and set its editable property to true.
+        var rectangle = new google.maps.Rectangle({
+          bounds: bounds,
+          editable: true,
+          strokeColor: '#5cb85c',
+          strokeOpacity: 0.5,
+          strokeWeight: 1,
+          fillColor: '#4286f4',
+          fillOpacity: 0.05
+
+        });
+        rectangle.setMap(map);
       }
     </script>
                             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQKX017Xi5gXb3-soFrYF73uCp4EcuL4M&callback=initMap">
