@@ -3,7 +3,7 @@
     <head>
         <Title>Family Tree</Title>
         <style>
-            * {margin: 0; padding: 0;}
+            * {margin: 0; padding: 0; background: white;}
 
 .tree ul {
 	padding-top: 20px; position: relative;
@@ -11,6 +11,7 @@
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
+    margin: 10px;
 }
 
 .tree li {
@@ -22,6 +23,7 @@
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
+    
 }
 
 /*We will use ::before and ::after to draw the connectors*/
@@ -29,12 +31,12 @@
 .tree li::before, .tree li::after{
 	content: '';
 	position: absolute; top: 0; right: 50%;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #000000;
 	width: 50%; height: 20px;
 }
 .tree li::after{
 	right: auto; left: 50%;
-	border-left: 1px solid #ccc;
+	border-left: 1px solid #000000;
 }
 
 /*We need to remove left-right connectors from elements without 
@@ -53,7 +55,7 @@ right connector from last child*/
 }
 /*Adding back the vertical connector to the last nodes*/
 .tree li:last-child::before{
-	border-right: 1px solid #ccc;
+	border-right: 1px solid #000000;
 	border-radius: 0 5px 0 0;
 	-webkit-border-radius: 0 5px 0 0;
 	-moz-border-radius: 0 5px 0 0;
@@ -68,15 +70,15 @@ right connector from last child*/
 .tree ul ul::before{
 	content: '';
 	position: absolute; top: 0; left: 50%;
-	border-left: 1px solid #ccc;
+	border-left: 1px solid #000000;
 	width: 0; height: 20px;
 }
 
 .tree li a{
-	border: 1px solid #ccc;
+	border: 1px solid #000000;
 	padding: 5px 10px;
 	text-decoration: none;
-	color: #666;
+	color: whitesmoke;
 	font-family: arial, verdana, tahoma;
 	font-size: 11px;
 	display: inline-block;
@@ -102,41 +104,48 @@ right connector from last child*/
 .tree li a:hover+ul ul::before{
 	border-color:  #94a0b4;
 }
+            
+            a{
+                background: #0052ad;
+            }
         </style>
     </head>
     <body>
 <div class="tree">
+    <br>
+    <h1 class="page-header" style="color:#0052ad; text-align: center;">Relationship Tree for Emily</h1><br>
+    <hr style="margin-left: 100px; margin-right: 100px;">
 	<ul>
-		<li>
-			<a href="#">You - Emily</a>
+		<li style="margin-left: 250px;">
+			<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/emily.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>You <br> Emily</a>
 			<ul>
 				<li>
-					<a href="#">Son - Andrew</a>
+					<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son <br> Andrew</a>
 					<ul>
 						<li>
-							<a href="#">Grand Daughter - Mia</a>
+							<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br> Mia</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a href="#">Daughter - Lisa</a>
+                    <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter <br> Lisa</a>
 					<ul>
-						<li><a href="#">Grand Son - Tony</a></li>
+						<li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Tony</a></li>
 						<li>
-							<a href="#">Grand Son - Jack</a>
+							<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Jack</a>
 							<ul>
 								<li>
-									<a href="#">Great Grand Daughter - Caroline</a>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand Daughter <br> Caroline</a>
 								</li>
 								<li>
-									<a href="#">Great Grand Daughter - Sally</a>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand Daughter <br> Sally</a>
 								</li>
 								<li>
-									<a href="#">Great Grand Son - Charles</a>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand Son <br> Charles</a>
 								</li>
 							</ul>
 						</li>
-						<li><a href="#">Grand Daughter - Ellena</a></li>
+						<li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br> Ellena</a></li>
 					</ul>
 				</li>
 			</ul>
