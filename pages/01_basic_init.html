@@ -1,0 +1,187 @@
+<!doctype html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Your Schedule</title>
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!--metismeun CSS-->
+    <link rel="stylesheet" type="text/css" href="../node_modules/metismenu/dist/metisMenu.min.css">
+    <!--fontawesome CSS-->
+    <link rel="stylesheet" type="text/css" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <!--Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+	<script src="../codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../codebase/dhtmlxscheduler.css" type="text/css" charset="utf-8">
+
+	
+<style type="text/css" >
+	html, body{
+		margin:0px;
+		padding:0px;
+		height:100%;
+		overflow:hidden;
+	}	
+</style>
+
+<script type="text/javascript" charset="utf-8">
+	function init() {
+ 
+        var events = [
+{id:1, text:"Get Ready for the day",   start_date:"03/17/2017 07:30",end_date:"03/17/2017 08:00"},
+{id:2, text:"Time for breakfast",start_date:"03/17/2017 08:00",end_date:"03/17/2017 09:00"},
+{id:3, text:"Go for a walk", start_date:"03/17/2017 09:49",end_date:"03/17/2017 10:30"},
+{id:4, text:"Tea time", start_date:"03/17/2017 10:57",end_date:"03/17/2017 11:30"},
+{id:5, text:"Lunch time", start_date:"03/17/2017 12:00",end_date:"03/17/2017 13:00"},
+{id:6, text:"Play Bingo at Aorara ward", start_date:"03/17/2017 14:00",end_date:"03/17/2017 14:50"},
+{id:7, text:"Tea time", start_date:"03/17/2017 15:00",end_date:"03/17/2017 15:30"},
+{id:8, text:"Dinner time", start_date:"03/17/2017 16:00",end_date:"03/17/2017 17:00"},
+{id:9, text:"Time for bed", start_date:"03/17/2017 21:10",end_date:"03/17/2017 07:00"},
+];
+        scheduler.init('scheduler_here',new Date(2017,2,17),"day");
+        scheduler.parse(events, "json");
+		scheduler.config.xml_date="%Y-%m-%d %H:%i";
+		scheduler.load(events);
+		
+	}
+</script>
+
+<body onload="init();">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0 ; ">
+           <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CURA - Setup Scheduler</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw" style="color: #0052ad"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw "></i> "what is next?"
+                                    <span class="pull-right text-muted small">59 seconds ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-exclamation   fa-fw"></i> watch is back switched on.
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-exclamation    fa-fw"></i> watch is switching off.
+                                    <span class="pull-right text-muted small">30 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#Alerts">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw" style="color: #0052ad"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw "></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+
+                        <li>
+                            <a href="dashboard.html"><i class="fa fa-dashboard fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Dashboard</font></a>
+                        </li>
+                        <li>
+                            <a href="familyTree.html"><i class="fa fa-sitemap fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Family Tree</font></a>
+                        </li>
+                        <li>
+                            <a href="familyTree.html"><i class="fa fa-edit fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Add History</font></a>
+                        </li>
+                        <li>
+                            <a href="01_basic_init.html"><i class="fa fa-table fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Setup Schedule</font></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"style="color: #0052ad"></i>   <font color="#0052ad">Watch Setting</font><span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"style="color: #0052ad"></i>   <font color="#0052ad">Account Setting</font><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="blank.html">
+                                        <font color="#0052ad">Subscription</font>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login.html">
+                                        <font color="#0052ad">Login Page</font>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+	<div id="scheduler_here" class="dhx_cal_container" style='margin-left: 275px; height:100%;'>
+		<div class="dhx_cal_navline">
+			<div class="dhx_cal_prev_button">&nbsp;</div>
+			<div class="dhx_cal_next_button">&nbsp;</div>
+			<div class="dhx_cal_today_button"></div>
+			<div class="dhx_cal_date"></div>
+			<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
+			<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+			<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+            <a href="../../index.html"><div class="dhx_cal_tab" name="Save" style="right:12px;"></div></a>
+		</div>
+		<div class="dhx_cal_header">
+		</div>
+		<div class="dhx_cal_data">
+		</div>
+	</div>
+</body>

@@ -17,123 +17,38 @@
     <link rel="stylesheet" type="text/css" href="../node_modules/font-awesome/css/font-awesome.min.css">
     <!--Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-            <style>
-            * {margin: 0; padding: 0; background: white;}
+    <script src="../codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../codebase/dhtmlxscheduler.css" type="text/css" charset="utf-8">
+    <style type="text/css" >
+	html, body{
+		margin:0px;
+		padding:0px;
+		height:100%;
+		overflow:hidden;
+	}	
+</style>
 
-.tree ul {
-	padding-top: 20px; position: relative;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-}
-
-.tree li {
-	float: left; text-align: center;
-	list-style-type: none;
-	position: relative;
-	padding: 20px 5px 0 5px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-    
-}
-
-/*We will use ::before and ::after to draw the connectors*/
-
-.tree li::before, .tree li::after{
-	content: '';
-	position: absolute; top: 0; right: 50%;
-	border-top: 1px solid #000000;
-	width: 50%; height: 20px;
-}
-.tree li::after{
-	right: auto; left: 50%;
-	border-left: 1px solid #000000;
-}
-
-/*We need to remove left-right connectors from elements without 
-any siblings*/
-.tree li:only-child::after, .tree li:only-child::before {
-	display: none;
-}
-
-/*Remove space from the top of single children*/
-.tree li:only-child{ padding-top: 0;}
-
-/*Remove left connector from first child and 
-right connector from last child*/
-.tree li:first-child::before, .tree li:last-child::after{
-	border: 0 none;
-}
-/*Adding back the vertical connector to the last nodes*/
-.tree li:last-child::before{
-	border-right: 1px solid #000000;
-	border-radius: 0 5px 0 0;
-	-webkit-border-radius: 0 5px 0 0;
-	-moz-border-radius: 0 5px 0 0;
-}
-.tree li:first-child::after{
-	border-radius: 5px 0 0 0;
-	-webkit-border-radius: 5px 0 0 0;
-	-moz-border-radius: 5px 0 0 0;
-}
-
-/*Time to add downward connectors from parents*/
-.tree ul ul::before{
-	content: '';
-	position: absolute; top: 0; left: 50%;
-	border-left: 1px solid #000000;
-	width: 0; height: 20px;
-}
-
-.tree li a{
-	border: 1px solid #000000;
-	padding: 5px 10px;
-	text-decoration: none;
-	color: whitesmoke;
-	font-family: arial, verdana, tahoma;
-	font-size: 11px;
-	display: inline-block;
-	
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-}
-
-/*Time for some hover effects*/
-/*We will apply the hover effect the the lineage of the element also*/
-.tree li a:hover, .tree li a:hover+ul li a {
-	background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
-}
-/*Connector styles on hover*/
-.tree li a:hover+ul li::after, 
-.tree li a:hover+ul li::before, 
-.tree li a:hover+ul::before, 
-.tree li a:hover+ul ul::before{
-	border-color:  #94a0b4;
-}
-            
-           .tree a{
-                background: #0052ad;
-            }
-
-        </style>
-    
-<script>
-    $(function(){
-    $('#picker').change( function(e) {
-        
-        var img = URL.createObjectURL(e.target.files[0]);
-        $('').style.backgroundImage = "url(img)";
-            
-    });
-});
+<script type="text/javascript" charset="utf-8">
+	debugger
+    function init() {
+ 
+        var events = [
+{id:1, text:"Get Ready for the day",   start_date:"03/17/2017 07:30",end_date:"03/17/2017 08:00"},
+{id:2, text:"Time for breakfast",start_date:"03/17/2017 08:00",end_date:"03/17/2017 09:00"},
+{id:3, text:"Go for a walk", start_date:"03/17/2017 09:49",end_date:"03/17/2017 10:30"},
+{id:4, text:"Tea time", start_date:"03/17/2017 10:57",end_date:"03/17/2017 11:30"},
+{id:5, text:"Lunch time", start_date:"03/17/2017 12:00",end_date:"03/17/2017 13:00"},
+{id:6, text:"Play Bingo at Aorara ward", start_date:"03/17/2017 14:00",end_date:"03/17/2017 14:50"},
+{id:7, text:"Tea time", start_date:"03/17/2017 15:00",end_date:"03/17/2017 15:30"},
+{id:8, text:"Dinner time", start_date:"03/17/2017 16:00",end_date:"03/17/2017 17:00"},
+{id:9, text:"Time for bed", start_date:"03/17/2017 21:10",end_date:"03/17/2017 07:00"},
+];
+        scheduler.init('scheduler_here',new Date(2017,2,17),"day");
+        scheduler.parse(events, "json");
+		scheduler.config.xml_date="%Y-%m-%d %H:%i";
+		scheduler.load(events);
+		
+	}
 </script>
 </head>
     
@@ -142,8 +57,8 @@ right connector from last child*/
 	
 
     
-<body>
-    <div id="wrapper"  style="height:100%;">
+<body onload="init();">
+    <div id="wrapper">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0 ; ">
@@ -154,7 +69,7 @@ right connector from last child*/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">CURA - Family Tree</a>
+                <a class="navbar-brand" href="index.html">Cura - Scheduler</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -268,51 +183,23 @@ right connector from last child*/
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper">
-         <div class="tree">
-	<ul>
-		<li>
-			<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/emily.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>You <br> Emily</a>
-            <a><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Husband <br> Logan</a>
-			<ul>
-				<li>
-					<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son <br> Andrew</a>
-                    <a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter in-law <br> Leah</a>
-					<ul>
-						<li>
-							<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br><input type="file" id="picker" style="color: transparent">Grand Daughter <br> Mia</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-                    <a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter <br> Lisa</a>
-                    <a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son in-Law <br> Peter</a>
-					<ul>
-						<li><a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Tony</a></li>
-                        <li><a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand<br> Daughter in-Law <br> Maggie</a></li>
-						<li>
-							<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Jack</a>
-                            <a href="#"><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br>in-Law Riya</a>
-							<ul>
-								<li>
-									<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Daughter <br> Caroline</a>
-								</li>
-								<li>
-									<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Daughter <br> Sally</a>
-								</li>
-								<li>
-									<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Son <br> Charles</a>
-								</li>
-							</ul>
-						</li>
-						<li><a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br> Ellena</a></li>
-                        <li><a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son in-Law <br> Damon</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</div>
+        <div id="page-wrapper" style="Z-index: 500px;">
+           	<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+		<div class="dhx_cal_navline">
+			<div class="dhx_cal_prev_button">&nbsp;</div>
+			<div class="dhx_cal_next_button">&nbsp;</div>
+			<div class="dhx_cal_today_button"></div>
+			<div class="dhx_cal_date"></div>
+			<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
+			<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+			<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+            <a href="../../index.html"><div class="dhx_cal_tab" name="Save" style="right:12px;"></div></a>
+		</div>
+		<div class="dhx_cal_header">
+		</div>
+		<div class="dhx_cal_data">
+		</div>
+	</div>
         
             
         </div>

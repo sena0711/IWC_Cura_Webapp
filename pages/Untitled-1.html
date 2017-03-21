@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
     <title>CURA - care wherever you are</title>
     <!--Boostrap's CSS-->
@@ -15,9 +15,13 @@
     <link rel="stylesheet" type="text/css" href="../node_modules/metismenu/dist/metisMenu.min.css">
     <!--fontawesome CSS-->
     <link rel="stylesheet" type="text/css" href="../node_modules/font-awesome/css/font-awesome.min.css">
+
+    <!--Morris chart CSS-->
+    <link rel="stylesheet" type="text/css" href="../node_modules/morris.js/morris.css">
     <!--Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-            <style>
+
+        <style>
             * {margin: 0; padding: 0; background: white;}
 
 .tree ul {
@@ -26,6 +30,7 @@
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
+    margin: 10px;
 }
 
 .tree li {
@@ -124,26 +129,10 @@ right connector from last child*/
             }
 
         </style>
-    
-<script>
-    $(function(){
-    $('#picker').change( function(e) {
-        
-        var img = URL.createObjectURL(e.target.files[0]);
-        $('').style.backgroundImage = "url(img)";
-            
-    });
-});
-</script>
 </head>
-    
-    
 
-	
-
-    
 <body>
-    <div id="wrapper"  style="height:100%;">
+    <div id="wrapper">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0 ; ">
@@ -154,7 +143,7 @@ right connector from last child*/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">CURA - Family Tree</a>
+                <a class="navbar-brand" href="index.html">CURA - care wherever you are</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -170,8 +159,8 @@ right connector from last child*/
                         <li>
                             <a href="#">
                                 <div>
-                                    <i class="fa fa-comment fa-fw "></i> "what is next?"
-                                    <span class="pull-right text-muted small">59 seconds ago</span>
+                                    <i class="fa fa-comment fa-fw "></i> "Who is my Son"
+                                    <span class="pull-right text-muted small">1 minutes ago</span>
                                 </div>
                             </a>
                         </li>
@@ -240,7 +229,7 @@ right connector from last child*/
                             <a href="familyTree.html"><i class="fa fa-edit fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Add History</font></a>
                         </li>
                         <li>
-                            <a href="01_basic_init.html"><i class="fa fa-table fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Setup Schedule</font></a>
+                            <a href="../samples/01_initialization_loading/01_basic_init.html"><i class="fa fa-table fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Setup Schedule</font></a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"style="color: #0052ad"></i>   <font color="#0052ad">Watch Setting</font><span class="fa arrow"></span></a>
@@ -269,53 +258,54 @@ right connector from last child*/
         </nav>
 
         <div id="page-wrapper">
-         <div class="tree">
+           <div class="tree">
+    <br>
+    <h1 class="page-header" style="color:#0052ad; text-align: center;">Relationship Tree for Emily</h1><br>
+    <hr style="margin-left: 100px; margin-right: 100px;">
 	<ul>
-		<li>
-			<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/emily.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>You <br> Emily</a>
-            <a><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Husband <br> Logan</a>
+		<li style="margin-left: 150px;">
+			<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/emily.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>You <br> Emily</a>
+            <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Husband <br> Logan</a>
 			<ul>
 				<li>
-					<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son <br> Andrew</a>
-                    <a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter in-law <br> Leah</a>
+					<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son <br> Andrew</a>
+                    <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter in-law <br> Leah</a>
 					<ul>
 						<li>
-							<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br><input type="file" id="picker" style="color: transparent">Grand Daughter <br> Mia</a>
+							<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br> Mia</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-                    <a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter <br> Lisa</a>
-                    <a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son in-Law <br> Peter</a>
+                    <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter <br> Lisa</a>
+                    <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son in-Law <br> Peter</a>
 					<ul>
-						<li><a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Tony</a></li>
-                        <li><a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand<br> Daughter in-Law <br> Maggie</a></li>
+						<li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Tony</a></li>
+                        <li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand<br> Daughter in-Law <br> Maggie</a></li>
 						<li>
-							<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Jack</a>
-                            <a href="#"><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br>in-Law Riya</a>
+							<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Jack</a>
+                            <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br>in-Law Riya</a>
 							<ul>
 								<li>
-									<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Daughter <br> Caroline</a>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Daughter <br> Caroline</a>
 								</li>
 								<li>
-									<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Daughter <br> Sally</a>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Daughter <br> Sally</a>
 								</li>
 								<li>
-									<a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Son <br> Charles</a>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Son <br> Charles</a>
 								</li>
 							</ul>
 						</li>
-						<li><a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br> Ellena</a></li>
-                        <li><a><button class="btn-lg" id="picker" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son in-Law <br> Damon</a></li>
+						<li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br> Ellena</a></li>
+                        <li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son in-Law <br> Damon</a></li>
 					</ul>
 				</li>
 			</ul>
 		</li>
 	</ul>
-</div>
-        
-            
-        </div>
+</div> 
+                    
         <!-- /#page-wrapper -->
 
     </div>
