@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CURA - care wherever you are</title>
+    <!--Boostrap's CSS-->
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!--metismeun CSS-->
+    <link rel="stylesheet" type="text/css" href="../node_modules/metismenu/dist/metisMenu.min.css">
+    <!--fontawesome CSS-->
+    <link rel="stylesheet" type="text/css" href="../node_modules/font-awesome/css/font-awesome.min.css">
+
+    <!--Morris chart CSS-->
+    <link rel="stylesheet" type="text/css" href="../node_modules/morris.js/morris.css">
+    <!--Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+        <style>
+            * {margin: 0; padding: 0; background: white;}
+
+.tree ul {
+	padding-top: 20px; position: relative;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+    margin: 10px;
+}
+
+.tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+    
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #000000;
+	width: 50%; height: 20px;
+}
+.tree li::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #000000;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after{
+	border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+	border-right: 1px solid #000000;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #000000;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+	border: 1px solid #000000;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: whitesmoke;
+	font-family: arial, verdana, tahoma;
+	font-size: 11px;
+	display: inline-block;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+}
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after, 
+.tree li a:hover+ul li::before, 
+.tree li a:hover+ul::before, 
+.tree li a:hover+ul ul::before{
+	border-color:  #94a0b4;
+}
+            
+           .tree a{
+                background: #0052ad;
+            }
+
+        </style>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0 ; ">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CURA - care wherever you are</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw" style="color: #0052ad"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw "></i> "Who is my Son"
+                                    <span class="pull-right text-muted small">1 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-exclamation   fa-fw"></i> watch is back switched on.
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-exclamation    fa-fw"></i> watch is switching off.
+                                    <span class="pull-right text-muted small">30 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#Alerts">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw" style="color: #0052ad"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw "></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+
+                        <li>
+                            <a href="dashboard.html"><i class="fa fa-dashboard fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Dashboard</font></a>
+                        </li>
+                        <li>
+                            <a href="familyTree.html"><i class="fa fa-sitemap fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Family Tree</font></a>
+                        </li>
+                        <li>
+                            <a href="familyTree.html"><i class="fa fa-edit fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Add History</font></a>
+                        </li>
+                        <li>
+                            <a href="../samples/01_initialization_loading/01_basic_init.html"><i class="fa fa-table fa-fw"style="color: #0052ad"></i> <font color="#0052ad">Setup Schedule</font></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"style="color: #0052ad"></i>   <font color="#0052ad">Watch Setting</font><span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"style="color: #0052ad"></i>   <font color="#0052ad">Account Setting</font><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="blank.html">
+                                        <font color="#0052ad">Subscription</font>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login.html">
+                                        <font color="#0052ad">Login Page</font>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+           <div class="tree">
+    <br>
+    <h1 class="page-header" style="color:#0052ad; text-align: center;">Relationship Tree for Emily</h1><br>
+    <hr style="margin-left: 100px; margin-right: 100px;">
+	<ul>
+		<li style="margin-left: 150px;">
+			<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/emily.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>You <br> Emily</a>
+            <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Husband <br> Logan</a>
+			<ul>
+				<li>
+					<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son <br> Andrew</a>
+                    <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png); background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter in-law <br> Leah</a>
+					<ul>
+						<li>
+							<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br> Mia</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+                    <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Daughter <br> Lisa</a>
+                    <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Son in-Law <br> Peter</a>
+					<ul>
+						<li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Tony</a></li>
+                        <li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand<br> Daughter in-Law <br> Maggie</a></li>
+						<li>
+							<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son <br> Jack</a>
+                            <a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br>in-Law Riya</a>
+							<ul>
+								<li>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Daughter <br> Caroline</a>
+								</li>
+								<li>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Daughter <br> Sally</a>
+								</li>
+								<li>
+									<a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Great Grand <br>Son <br> Charles</a>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Daughter <br> Ellena</a></li>
+                        <li><a href="#"><button class="btn-lg" style="height: 85px; width:85px; background: url(../css/dp.png);background-size: 85px 85px; Border-radius: 50%; Display: block;"></button><br>Grand Son in-Law <br> Damon</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div> 
+                    
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- 
+            NB: You generally do not want to publically expose the server structure (eg. ./node_modules/...)
+            will sort that in later bootcamps with task-runners and the like.
+            For now this is just a demonstration.
+
+            Alternatively can use CDNs for bootstrap/jquery
+        -->
+
+
+    <!--jQuery Script-->
+    <script src="../node_modules/jquery/dist/jquery.min.js "></script>
+    <!--Bootstrap Script-->
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js "></script>
+    <!--Metismenu Script-->
+    <script src="../node_modules/metismenu/dist/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="../node_modules/raphael/raphael.min.js"></script>
+    <script src="../node_modules/morris.js/morris.min.js"></script>
+
+    <!--Custom Script-->
+    <script src="../js/basic.js "></script>
+    
+    <!--<script>
+    $(document).ready(functon(){
+             $('.inpt').onclick(function(){
+        $('.inpt').clone(function(){
+            
+        });
+    });         
+                      });
+    </script>-->
+</body>
+
+</html>
